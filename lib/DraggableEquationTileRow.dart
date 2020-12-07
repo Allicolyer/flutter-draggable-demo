@@ -23,7 +23,7 @@ class DraggableEquationTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Draggable<Map<String, String>>(
         data: {'type': type, "value": value},
-        feedback: ColoredTile(type, value),
+        feedback: Material(child: ColoredTile(type, value)),
         child: ColoredTile(type, value),
         childWhenDragging:
             Opacity(opacity: 0.7, child: ColoredTile(type, value)));
