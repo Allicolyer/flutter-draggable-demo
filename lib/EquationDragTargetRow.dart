@@ -17,15 +17,11 @@ class EquationDragTarget extends StatelessWidget {
   bool accepted = false;
   @override
   Widget build(BuildContext context) {
-    return DragTarget(builder: (
+    return DragTarget<Map<String, String>>(builder: (
       context,
-      List<String> candidateData,
+      candidateData,
       rejectedData,
     ) {
-      print("candidateData");
-      print(candidateData);
-      print("rejectedData");
-      print(rejectedData);
       return accepted
           ? ColoredTile(typeAccepted, "accepted")
           : ColoredTile(typeAccepted);

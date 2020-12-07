@@ -21,7 +21,7 @@ class DraggableEquationTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Draggable(
+    return Draggable<Map<String, String>>(
         data: {'type': type, "value": value},
         feedback: ColoredTile(type, value),
         child: ColoredTile(type, value),
