@@ -9,17 +9,12 @@ class EquationDragTargetRow extends StatelessWidget {
   }
 }
 
-class EquationDragTarget extends StatefulWidget {
+// ignore: must_be_immutable
+class EquationDragTarget extends StatelessWidget {
   final String typeAccepted;
   EquationDragTarget(this.typeAccepted);
 
-  @override
-  _EquationDragTargetState createState() => _EquationDragTargetState();
-}
-
-class _EquationDragTargetState extends State<EquationDragTarget> {
-  String value = "";
-  
+  bool accepted = false;
   @override
   Widget build(BuildContext context) {
     return DragTarget(builder: (
@@ -27,18 +22,21 @@ class _EquationDragTargetState extends State<EquationDragTarget> {
       List<String> candidateData,
       rejectedData,
     ) {
-      return ColoredTile(widget.typeAccepted, value);
+      print("candidateData");
+      print(candidateData);
+      print("rejectedData");
+      print(rejectedData);
+      return accepted
+          ? ColoredTile(typeAccepted, "accepted")
+          : ColoredTile(typeAccepted);
     }, onWillAccept: (Map<String, String> data) {
-      if (data["type"] == widget.typeAccepted) {
+      if (data["type"] == typeAccepted) {
         return true;
       } else {
         return false;
       }
     }, onAccept: (data) {
-      setState(() {
-        value = data["value"];
-      });
-      return true;
+      accepted = true;
     });
   }
 }
